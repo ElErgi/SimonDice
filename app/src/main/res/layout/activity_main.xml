@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonBlue"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#3498db"
+        android:text="Blue" />
+
+    <Button
+        android:id="@+id/buttonRed"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/buttonBlue"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#e74c3c"
+        android:text="Red" />
+
+    <Button
+        android:id="@+id/buttonYellow"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/buttonRed"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#f1c40f"
+        android:text="Yellow" />
+
+    <Button
+        android:id="@+id/buttonGreen"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/buttonYellow"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#2ecc71"
+        android:text="Green" />
+
+    <Button
+        android:id="@+id/buttonRepeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonGreen"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Repeat Sequence" />
+
+    <TextView
+        android:id="@+id/textWin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonRepeat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="¡Has ganado!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textLose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonRepeat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="¡Has perdido!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/textTeToca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TE TOCA"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+</RelativeLayout>
