@@ -24,31 +24,32 @@ class ButtonClickListener(
             if (!isSequenceRunning) {
                 isSequenceRunning = true
                 it.isEnabled = false
-                userSequence.clear() // Limpiar userSequence antes de comenzar una nueva secuencia
+                userSequence.clear()
+                activity.hideWinMessage()
+                activity.hideLoseMessage()
                 startSequence()
             }
         }
 
         for (button in buttons) {
             button.setOnClickListener {
-                if (isSequenceRunning || userSequence.size >= 4) return@setOnClickListener
+                if (!isSequenceRunning && userSequence.size < sequence.size) {
+                    val color = button.backgroundTintList?.defaultColor ?: Color.WHITE
+                    button.setBackgroundColor(Color.parseColor("#CCCCCC"))
+                    Handler().postDelayed({
+                        button.setBackgroundColor(color)
+                    }, 200)
 
-                val color = button.backgroundTintList?.defaultColor ?: Color.WHITE
-                button.setBackgroundColor(Color.parseColor("#CCCCCC"))
-                Handler().postDelayed({
-                    button.setBackgroundColor(color)
-                }, 200)
+                    userSequence.add(button)
+                    soundManager.playSound(buttons.indexOf(button))
 
-                userSequence.add(button) // Agregar el botón, no el índice
-                soundManager.playSound(buttons.indexOf(button)) // Reproducir el sonido asociado al botón
-
-                if (userSequence.size == 4) {
-                    if (checkUserSequence()) {
-                        activity.runOnUiThread { activity.showWinMessage() }
-                    } else {
-                        activity.runOnUiThread { activity.showLoseMessage() }
+                    if (userSequence.size == sequence.size) {
+                        if (checkUserSequence()) {
+                            activity.runOnUiThread { activity.showWinMessage() }
+                        } else {
+                            activity.runOnUiThread { activity.showLoseMessage() }
+                        }
                     }
-                    resetGame()
                 }
             }
         }
@@ -58,18 +59,13 @@ class ButtonClickListener(
         buttonPlay.isEnabled = false
 
         sequence.clear()
-
         repeat(4) {
             sequence.add((0 until buttons.size).random())
         }
 
         playNextSound(0)
-
-        // Delay para mostrar el mensaje después de que la secuencia haya terminado
-        Handler().postDelayed({
-            activity.showTeTocaMessage()
-        }, 1000 * sequence.size.toLong()) // 1000 ms * número de botones en la secuencia
     }
+
     private fun playNextSound(index: Int) {
         if (index < sequence.size) {
             val button = buttons[sequence[index]]
@@ -83,6 +79,7 @@ class ButtonClickListener(
         } else {
             enableButtonClickListener()
             buttonPlay.isEnabled = true
+            isSequenceRunning = false
         }
     }
 
@@ -98,14 +95,5 @@ class ButtonClickListener(
             if (buttons.indexOf(userSequence[i]) != sequence[i]) return false
         }
         return true
-    }
-
-    private fun resetGame() {
-        userSequence.clear()
-        for (button in buttons) {
-            button.isEnabled = false
-        }
-        buttonPlay.isEnabled = true
-        isSequenceRunning = false
     }
 }

@@ -3,11 +3,10 @@ package com.example.simondice
 import android.media.AudioAttributes
 import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
-
-class SoundManager(activity: AppCompatActivity) {
+class SoundManager(activity: AppCompatActivity, private val soundResources: List<Int>) {
 
     private val soundPool: SoundPool
-    private val soundIds = IntArray(4)
+    private val soundIds = IntArray(soundResources.size)
 
     init {
         val audioAttributes = AudioAttributes.Builder()
@@ -16,14 +15,13 @@ class SoundManager(activity: AppCompatActivity) {
             .build()
 
         soundPool = SoundPool.Builder()
-            .setMaxStreams(4)
+            .setMaxStreams(soundResources.size)
             .setAudioAttributes(audioAttributes)
             .build()
 
-        soundIds[0] = soundPool.load(activity, R.raw.fa, 1)
-        soundIds[1] = soundPool.load(activity, R.raw.gb4, 1)
-        soundIds[2] = soundPool.load(activity, R.raw.la, 1)
-        soundIds[3] = soundPool.load(activity, R.raw.mi, 1)
+        for (i in soundResources.indices) {
+            soundIds[i] = soundPool.load(activity, soundResources[i], 1)
+        }
     }
 
     fun playSound(index: Int) {

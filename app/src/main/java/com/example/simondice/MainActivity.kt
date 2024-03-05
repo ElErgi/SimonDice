@@ -20,15 +20,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Asignar la referencia de buttonRepeat después de inflar el diseño
         buttonRepeat = findViewById(R.id.buttonRepeat)
         buttonBlue = findViewById(R.id.buttonBlue)
         buttonRed = findViewById(R.id.buttonRed)
         buttonYellow = findViewById(R.id.buttonYellow)
         buttonGreen = findViewById(R.id.buttonGreen)
 
-        // Inicializar el SoundManager
-        soundManager = SoundManager(this)
+        // Inicializar el SoundManager con los recursos de sonido asociados a cada botón
+        soundManager = SoundManager(this, listOf(R.raw.fa, R.raw.gb4, R.raw.la, R.raw.mi))
 
         // Inicializar el ButtonClickListener y configurar los listeners
         buttonClickListener = ButtonClickListener(this, soundManager, listOf(buttonBlue, buttonRed, buttonYellow, buttonGreen))
@@ -40,18 +39,20 @@ class MainActivity : AppCompatActivity() {
         textWin.visibility = View.VISIBLE
     }
 
+    fun hideWinMessage() {
+        val textWin = findViewById<TextView>(R.id.textWin)
+        textWin.visibility = View.INVISIBLE
+    }
+
     fun showLoseMessage() {
         val textLose = findViewById<TextView>(R.id.textLose)
         textLose.visibility = View.VISIBLE
     }
-    fun showTeTocaMessage() {
-        val messageTextView = findViewById<TextView>(R.id.textTeToca)
-        messageTextView.text = "Te toca"
-        messageTextView.visibility = View.VISIBLE
+
+    fun hideLoseMessage() {
+        val textLose = findViewById<TextView>(R.id.textLose)
+        textLose.visibility = View.INVISIBLE
     }
-    fun hideTeTocaMessage() {
-        val textTeToca = findViewById<TextView>(R.id.textTeToca)
-        textTeToca.visibility = View.INVISIBLE
-    }
+
 
 }

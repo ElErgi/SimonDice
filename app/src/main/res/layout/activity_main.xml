@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,81 +10,90 @@
         android:id="@+id/buttonBlue"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="212dp"
         android:backgroundTint="#3498db"
-        android:text="Blue" />
-
-    <Button
-        android:id="@+id/buttonRed"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/buttonBlue"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="#e74c3c"
-        android:text="Red" />
+        android:text="Blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonYellow"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@id/buttonRed"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="56dp"
         android:backgroundTint="#f1c40f"
-        android:text="Yellow" />
+        android:text="Yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBlue" />
 
     <Button
         android:id="@+id/buttonGreen"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@id/buttonYellow"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="156dp"
         android:backgroundTint="#2ecc71"
-        android:text="Green" />
+        android:text="Green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBlue" />
 
     <Button
-        android:id="@+id/buttonRepeat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonGreen"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="Repeat Sequence" />
+        android:id="@+id/buttonRed"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#e74c3c"
+        android:text="Red"
+        app:layout_constraintEnd_toStartOf="@+id/buttonYellow"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBlue" />
 
     <TextView
         android:id="@+id/textWin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonRepeat"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
         android:text="¡Has ganado!"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/buttonRepeat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/textLose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonRepeat"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
         android:text="¡Has perdido!"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:visibility="gone" />
-    <TextView
-        android:id="@+id/textTeToca"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonRepeat"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <Button
+        android:id="@+id/buttonRepeat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TE TOCA"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"
-        android:visibility="invisible" />
+        android:layout_marginBottom="112dp"
+        android:text="Repeat Sequence"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
